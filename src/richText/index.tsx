@@ -1,79 +1,11 @@
 /* eslint-disable*/
 import React, { useEffect, useState } from "react"
 import styles from './index.module.less'
+import { bold, addStyle } from './util'
 
 // interface RichTextProps {
 // 	[key: string]: any
 // }
-
-function bold() {
-	document.execCommand('StyleWithCSS', true)
-	document.execCommand('Bold', false)
-}
-
-function addStyle() {
-	/**
-	* 用元素替换被选中的文本
-	*/
-	var replaceSelectedStrByEle = function (className: string) {
-
-		const selecter: any = window.getSelection()
-
-
-		const selectStr = selecter.toString()
-
-		if (selectStr.trim != "") {
-			var rang = selecter.getRangeAt(0)
-			var ele = document.createElement("i")
-			ele.className = className
-			ele.textContent = selectStr
-			rang.surroundContents(ele)
-		}
-	}
-
-	replaceSelectedStrByEle('nite-writer-pen');
-
-}
-
-// /**
-//  * 添加下划线
-//  */
-// addUnderline = () => {
-//   this.replaceSelectedStrByEle(styles['custom-underline'])
-// }
-
-// /**
-//  * 启用荧光笔
-//  */
-// enableNiteWriterPen = () => {
-//   this.replaceSelectedStrByEle(styles['nite-writer-pen'])
-// }
-
-// /**
-//  * 用元素替换被选中的文本
-//  */
-// https://blog.csdn.net/hefeng6500/article/details/94474303
-// const replaceSelectedStrByEle = (className:string) => {
-//   var getRange = () => {
-//     var me:any = window;
-//     var range = new Range(me.document);
-
-//     var sel = window.getSelection();
-//     if (sel && sel.rangeCount) {
-//       var firstRange = sel.getRangeAt(0);
-//       var lastRange = sel.getRangeAt(sel.rangeCount - 1);
-//       range.setStart(firstRange.startContainer, firstRange.startOffset)
-//         .setEnd(lastRange.endContainer, lastRange.endOffset);
-//     }
-//     return range
-//   }
-//   var range = getRange();
-//   range.applyInlineStyle('i', {
-//     class: className
-//   });
-//   range.select();
-// }
-
 
 
 export function RichText() {
@@ -87,19 +19,10 @@ export function RichText() {
 		console.log(selection)
 	}
 
-	useEffect(() => {
-		// window.addEventListener("load", () =>
-		// 	(frames as any)["editor"].document.designMode = "on";
-		// });
-		document.execCommand('StyleWithCSS', true)
-		document.execCommand('Bold', true)
-
-	}, [])
 	return <div>
 		<button onClick={() => { bold() }}>bold</button>
 		<button onClick={() => { addStyle() }}>add p</button>
-		<div>
-
+		<div className={styles['text']}>
 			<h3>《道德经》全文</h3>
 			<p>
 

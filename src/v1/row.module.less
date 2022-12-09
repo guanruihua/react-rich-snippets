@@ -1,0 +1,58 @@
+ .rich-text-row {
+   display: grid;
+  //  grid-template-columns: 1fr 1fr;
+   gap: 10px 10px;
+   margin-bottom: 10px;
+ }
+
+ .rich-text-row-text {
+   max-width: 100%;
+   box-sizing: border-box;
+
+   display: grid;
+   width: 600px;
+   white-space: pre-wrap;
+   overflow-wrap: anywhere;
+
+   &::after {
+     /* 注意奇怪的空间！需要预防跳动行为 */
+     content: attr(data-replicated-value) " ";
+
+     /* 这就是textarea文本的表现形式 */
+     //  white-space: pre-wrap;
+     white-space: pre-wrap;
+
+     /* 隐藏在视图，点击和屏幕阅读器中 */
+     visibility: hidden;
+   }
+
+   &>textarea,
+   &::after {
+     /* 需要相同的样式！ */
+     border: 1px solid black;
+     padding: 0.5rem;
+     font: inherit;
+
+     /* 放在彼此之上 */
+     grid-area: 1 / 1 / 2 / 2;
+   }
+
+   textarea {
+     resize: none;
+     overflow: hidden;
+     box-sizing: border-box;
+     display: block;
+     width: 100%;
+     outline-style: none;
+   }
+ }
+
+ .rich-text-row-control {
+   box-sizing: border-box;
+   width: 100%;
+
+   button {
+     box-sizing: border-box;
+     display: inline-block;
+   }
+ }

@@ -4,7 +4,7 @@ const ThemeContext = React.createContext<any>({})
 
 function Button(props: any) {
 	return <div>
-		{JSON.stringify(props)}<br />
+		{/* {JSON.stringify(props)}<br /> */}
 		<button onClick={() => {
 			props?.theme?.handleTheme()
 		}}>BTN</button>
@@ -49,7 +49,6 @@ export function Demo1() {
 	const [theme, setTheme] = useState<string>("dark")
 
 	return <div>
-		Demo1
 		<ThemeContext.Provider value={{
 			theme,
 			handleTheme: () => {

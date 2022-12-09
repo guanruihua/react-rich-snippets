@@ -10,7 +10,7 @@ export type MenuObject = RouteObject & _MenuObject
 
 const list = [
 	'richText',
-	'textarea',
+	'v1'
 ].map(name => {
 	return {
 		name,
