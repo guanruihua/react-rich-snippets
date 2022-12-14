@@ -9,6 +9,8 @@ interface _MenuObject extends Record<string, any> {
 export type MenuObject = RouteObject & _MenuObject
 
 const list = [
+	'slate',
+	'draft-js',
 	'richText',
 	'v1'
 ].map(name => {
